@@ -1,5 +1,5 @@
 # Use the official SQL Server Express image from Microsoft
-FROM mcr.microsoft.com/mssql/server
+FROM mcr.microsoft.com/mssql/server:2019-latest
 
 ENV ACCEPT_EULA Y
 
