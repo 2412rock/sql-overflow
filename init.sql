@@ -19,3 +19,9 @@ BEGIN
         NumberOfGames INT
     );
 END;
+
+USE OverflowDB;
+GO
+
+UPDATE Users
+SET Rank = 1000;
