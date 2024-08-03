@@ -2,7 +2,7 @@ IF NOT EXISTS (SELECT 1 FROM sys.databases WHERE name = 'OverflowDB')
 BEGIN
     CREATE DATABASE OverflowDB;
 END;
-
+GO
 -- Switch to the newly created database
 USE master;
 GO
