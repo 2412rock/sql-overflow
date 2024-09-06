@@ -36,3 +36,12 @@ BEGIN
     );
 END;
 GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Versions')
+BEGIN
+    CREATE TABLE Versions (
+        VersionID INT PRIMARY KEY IDENTITY,
+        RequiredGameVerion NVARCHAR(255),
+    );
+END;
+GO
