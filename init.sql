@@ -41,7 +41,15 @@ IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Versi
 BEGIN
     CREATE TABLE Versions (
         VersionID INT PRIMARY KEY IDENTITY,
-        RequiredGameVerion NVARCHAR(255),
+        RequiredGameVerion NVARCHAR(255)
     );
+END;
+GO
+
+-- Ensure Username column is case-sensitive (Latin1_General_BIN)
+IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Users')
+BEGIN
+    ALTER TABLE Users
+    ALTER COLUMN Username NVARCHAR(50) COLLATE Latin1_General_BIN;
 END;
 GO
