@@ -46,6 +46,21 @@ BEGIN
 END;
 GO
 
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'UserSessions')
+BEGIN
+    CREATE TABLE UserSessions (
+    SessionId INT PRIMARY KEY IDENTITY,
+    Username NVARCHAR(50) NOT NULL,
+    SessionToken NVARCHAR(255) NOT NULL,
+    DeviceId NVARCHAR(255) NULL,
+    LastActiveTime DATETIME NOT NULL,
+    IsActive BIT NOT NULL,
+);
+
+END;
+GO
+
+
 -- Ensure Username column is case-sensitive (Latin1_General_BIN)
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Users')
 BEGIN
