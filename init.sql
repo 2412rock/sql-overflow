@@ -60,6 +60,18 @@ BEGIN
 END;
 GO
 
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'BlockedUsers')
+BEGIN
+    CREATE TABLE BlockedUsers (
+    Id INT PRIMARY KEY IDENTITY,
+    Username NVARCHAR(50) NOT NULL,
+    BlockedUsername NVARCHAR(255) NOT NULL,
+);
+
+END;
+GO
+
+
 
 -- Ensure Username column is case-sensitive (Latin1_General_BIN)
 IF EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Users')
