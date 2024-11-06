@@ -65,8 +65,22 @@ BEGIN
     CREATE TABLE BlockedUsers (
     Id INT PRIMARY KEY IDENTITY,
     Username NVARCHAR(50) NOT NULL,
-    BlockedUsername NVARCHAR(255) NOT NULL,
+    BlockedUsername NVARCHAR(50) NOT NULL,
 );
+
+END;
+GO
+
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'UserReports')
+BEGIN
+    CREATE TABLE UserReports (
+    Id INT PRIMARY KEY IDENTITY,
+    Username NVARCHAR(50) NOT NULL,
+    ReportedUsername NVARCHAR(50) NOT NULL,
+    ReportDescription NVARCHAR(200) NOT NULL,
+);
+
 
 END;
 GO
