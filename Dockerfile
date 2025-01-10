@@ -16,7 +16,7 @@ EXPOSE 1434
 # Use the official SQL Server Express image from Microsoft
 
 # Enable TCP/IP protocol
-RUN /opt/mssql/bin/mssql-conf set network.tcpport 1433
+RUN /opt/mssql/bin/mssql-conf set network.tcpport 1434
 #RUN /opt/mssql/bin/mssql-conf set network.tcpenabled true
 
 # Start SQL Server and run initialization scripts
