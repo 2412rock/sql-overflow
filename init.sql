@@ -23,6 +23,16 @@ BEGIN
 END;
 GO
 
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'GuestUsers')
+BEGIN
+    CREATE TABLE GuestUsers (
+        UserID INT IDENTITY(1,1) PRIMARY KEY,
+        Username NVARCHAR(50) NOT NULL,
+        NumberOfGames INT
+    );
+END;
+GO
+
 -- Create Friends table if it does not exist
 IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Friends')
 BEGIN
